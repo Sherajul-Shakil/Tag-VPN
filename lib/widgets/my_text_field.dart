@@ -20,7 +20,7 @@ class MyTextField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title.toString(), style: CustomTextStyle.Black400),
+          Text(title.toString(), style: CustomTextStyle.Black400medium),
           TextField(
             controller: controller,
             style: CustomTextStyle.subTitleStyle,

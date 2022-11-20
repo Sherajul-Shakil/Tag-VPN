@@ -228,7 +228,8 @@ class _LogInPageState extends State<LogInPage> {
                                                   isLoggedIn: true);
                                               CustomToast.toastShower(
                                                   authProvider
-                                                      .loginUser.message!,
+                                                          .loginUser.message ??
+                                                      'lOGIN SUCCESSFULLY',
                                                   Colors.green);
                                               Navigator.push(context,
                                                   MaterialPageRoute(

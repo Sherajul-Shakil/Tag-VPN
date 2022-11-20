@@ -238,6 +238,7 @@ class _DrawerPageState extends State<DrawerPage> {
                                   // Navigator.of(context).push(MaterialPageRoute(
                                   //   builder: (context) => LogInPage(),
                                   // ));
+                                  authProvider.signOutGoogle();
                                 },
                                 child: Text('Sign Out',
                                     style: TextStyle(

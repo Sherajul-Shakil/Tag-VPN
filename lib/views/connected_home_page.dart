@@ -64,26 +64,27 @@ class _ConnectedHomePageState extends State<ConnectedHomePage> {
         ),
       ),
       actions: [
-        Consumer<AuthenticationProvider>(
-          builder: (context, authProvider, child) => authProvider.user == null
-              ? Image.asset(CustomString.what)
-              : Container(
-                  alignment: Alignment.center,
-                  height: 32.h,
-                  width: 32.w,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: CustomColor.greenMainColor),
-                  child: authProvider.user!.photoURL! != null
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.network(
-                            authProvider.user!.photoURL!,
-                          ),
-                        )
-                      : Text(authProvider.user!.displayName!.substring(0, 2)),
-                ),
-        ),
+        Image.asset(CustomString.what),
+        // Consumer<AuthenticationProvider>(
+        //   builder: (context, authProvider, child) => authProvider.user == null
+        //       ? Image.asset(CustomString.what)
+        //       : Container(
+        //           alignment: Alignment.center,
+        //           height: 32.h,
+        //           width: 32.w,
+        //           decoration: BoxDecoration(
+        //               shape: BoxShape.circle,
+        //               color: CustomColor.greenMainColor),
+        //           child: authProvider.user!.photoURL! != null
+        //               ? ClipRRect(
+        //                   borderRadius: BorderRadius.circular(100),
+        //                   child: Image.network(
+        //                     authProvider.user!.photoURL!,
+        //                   ),
+        //                 )
+        //               : Text(authProvider.user!.displayName!.substring(0, 2)),
+        //         ),
+        // ),
         SizedBox(width: 10),
       ],
     );
@@ -251,7 +252,7 @@ class _ConnectedHomePageState extends State<ConnectedHomePage> {
                                           fontWeight: FontWeight.w400)),
                                 ],
                               ),
-                              Text("Free & Unlimited Speed",
+                              Text("Free & Unlimited Speedfff",
                                   style: TextStyle(
                                       fontSize: 12.sp,
                                       color: Colors.white,
@@ -265,8 +266,8 @@ class _ConnectedHomePageState extends State<ConnectedHomePage> {
                             CustomString.wifiMedium,
                             height: height / 50,
                             width: width / 50,
-                            // color: CustomColor.wifiColor,
-                            color: Colors.white,
+                            color: CustomColor.wifiColor,
+                            // color: Colors.white,
                           )
                         ],
                       ),

@@ -110,7 +110,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(CustomString.name, style: CustomTextStyle.Black400),
+                      Text(CustomString.name,
+                          style: CustomTextStyle.Black400medium),
                       SizedBox(
                         height: height / 22,
                         child: CustomTextFormField(
@@ -129,7 +130,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(CustomString.logInTextField1,
-                          style: CustomTextStyle.Black400),
+                          style: CustomTextStyle.Black400medium),
                       SizedBox(
                         height: height / 22,
                         child: CustomTextFormField(
@@ -148,7 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(CustomString.logInTextField2,
-                          style: CustomTextStyle.Black400),
+                          style: CustomTextStyle.Black400medium),
                       SizedBox(
                         height: height / 22,
                         child: CustomPasswordFormField(
@@ -167,7 +168,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(CustomString.reTypePassword,
-                          style: CustomTextStyle.Black400),
+                          style: CustomTextStyle.Black400medium),
                       SizedBox(
                         height: height / 22,
                         child: CustomPasswordFormField(

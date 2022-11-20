@@ -69,15 +69,14 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       actions: [
-       InkWell(onTap: (){
-         Navigator.push(context,
-             MaterialPageRoute(
-                 builder: (context) {
-                   return SettingPage();
-                 }));
-       },
-           child:  Image.asset(CustomString.what),),
-
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return SettingPage();
+            }));
+          },
+          child: Image.asset(CustomString.what),
+        ),
         SizedBox(width: 10),
       ],
     );
@@ -283,11 +282,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 55.r),
+                  padding: EdgeInsets.symmetric(horizontal: 55.r),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -329,8 +327,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(Dimensions.radius),
                 ),
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 55.r),
+                  padding: EdgeInsets.symmetric(horizontal: 55.r),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -345,10 +342,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(height: Dimensions.heightSize8 * 4),
-             InkWell(
-               onTap: (){makePayment();},
-               child:  CustomButon(title: CustomString.Pbtn),
-             ),
+              InkWell(
+                onTap: () {
+                  makePayment();
+                },
+                child: CustomButon(title: CustomString.Pbtn),
+              ),
               Spacer(),
               Text(CustomString.PSubtitle2,
                   style: CustomTextStyle.subTitleStyle,
@@ -361,25 +360,23 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   Future<void> makePayment() async {
     try {
-
       paymentIntentData =
-      await createPaymentIntent('20', 'USD'); //json.decode(response.body);
+          await createPaymentIntent('20', 'USD'); //json.decode(response.body);
       // print('Response body==>${response.body.toString()}');
       print('Fuk');
       print(paymentIntentData!['client_secret']);
-      await Stripe.instance.initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-              paymentIntentClientSecret: paymentIntentData!['client_secret'],
-              style: ThemeMode.dark,
-              merchantDisplayName: 'ANNIE')).then((value){
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+                  paymentIntentClientSecret:
+                      paymentIntentData!['client_secret'],
+                  style: ThemeMode.dark,
+                  merchantDisplayName: 'ANNIE'))
+          .then((value) {
         print('Fuk');
-
-
       });
-
 
       ///now finally display payment sheeet
       displayPaymentSheet();
@@ -389,36 +386,34 @@ class _HomePageState extends State<HomePage> {
   }
 
   displayPaymentSheet() async {
-
     try {
-      await Stripe.instance.presentPaymentSheet(
-          parameters: PresentPaymentSheetParameters(
-            clientSecret: paymentIntentData!['client_secret'],
-            confirmPayment: true,
-          )).then((newValue){
-
-
-        print('payment intent'+paymentIntentData!['id'].toString());
-        print('payment intent'+paymentIntentData!['client_secret'].toString());
-        print('payment intent'+paymentIntentData!['amount'].toString());
-        print('payment intent'+paymentIntentData.toString());
+      await Stripe.instance
+          .presentPaymentSheet(
+              parameters: PresentPaymentSheetParameters(
+        clientSecret: paymentIntentData!['client_secret'],
+        confirmPayment: true,
+      ))
+          .then((newValue) {
+        print('payment intent' + paymentIntentData!['id'].toString());
+        print(
+            'payment intent' + paymentIntentData!['client_secret'].toString());
+        print('payment intent' + paymentIntentData!['amount'].toString());
+        print('payment intent' + paymentIntentData.toString());
         //orderPlaceApi(paymentIntentData!['id'].toString());
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("paid successfully")));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("paid successfully")));
 
         paymentIntentData = null;
-
-      }).onError((error, stackTrace){
+      }).onError((error, stackTrace) {
         print('Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
       });
-
-
     } on StripeException catch (e) {
       print('Exception/DISPLAYPAYMENTSHEET==> $e');
       showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            content: Text("Cancelled "),
-          ));
+                content: Text("Cancelled "),
+              ));
     } catch (e) {
       print('$e');
     }
@@ -437,8 +432,7 @@ class _HomePageState extends State<HomePage> {
           Uri.parse('https://api.stripe.com/v1/payment_intents'),
           body: body,
           headers: {
-            'Authorization':
-            'Bearer sk_test_26PHem9AhJZvU623DfE1x4sd',
+            'Authorization': 'Bearer sk_test_26PHem9AhJZvU623DfE1x4sd',
             'Content-Type': 'application/x-www-form-urlencoded'
           });
       print('Create Intent reponse ===> ${response.body.toString()}');
@@ -449,7 +443,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   calculateAmount(String amount) {
-    final a = (int.parse(amount)) * 100 ;
+    final a = (int.parse(amount)) * 100;
     return a.toString();
   }
 }

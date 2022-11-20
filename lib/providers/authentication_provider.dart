@@ -159,8 +159,8 @@ class AuthenticationProvider extends ChangeNotifier {
     // Trigger the authentication flow
     print('mail');
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-print('mail');
-    print(googleUser?.email??'');
+    print('mail');
+    print(googleUser?.email ?? '');
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
@@ -175,7 +175,10 @@ print('mail');
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
+  Future<void> signOutGoogle() async {
+    // await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
 
-
-
+    notifyListeners();
+  }
 }

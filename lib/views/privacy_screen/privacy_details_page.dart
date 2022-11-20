@@ -7,8 +7,8 @@ import 'package:tap_vpn_details/utils/custom_string.dart';
 import 'package:tap_vpn_details/utils/custom_text_style.dart';
 import 'package:tap_vpn_details/utils/dimensions.dart';
 
-class ProvacyDetailsPage extends StatelessWidget {
-  const ProvacyDetailsPage({super.key});
+class PrivacyDetailsPage extends StatelessWidget {
+  const PrivacyDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
