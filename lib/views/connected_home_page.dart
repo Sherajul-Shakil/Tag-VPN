@@ -9,6 +9,7 @@ import 'package:tap_vpn_details/utils/custom_string.dart';
 import 'package:tap_vpn_details/utils/custom_text_style.dart';
 import 'package:tap_vpn_details/utils/dimensions.dart';
 import 'package:tap_vpn_details/views/drawer_page.dart';
+import 'package:tap_vpn_details/views/premium_subscription_page/payment_page.dart';
 import '../providers/authentication_provider.dart';
 import '../widgets/custom_button.dart';
 import 'authentication_screens/login_page.dart';
@@ -41,7 +42,10 @@ class _ConnectedHomePageState extends State<ConnectedHomePage> {
           child: Image.asset(CustomString.drawer)),
       title: InkWell(
         onTap: () {
-          bottomDetailsSheet(context);
+          // bottomDetailsSheet(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return PaymentPage();
+          }));
         },
         child: Container(
           height: 32.h,
@@ -309,160 +313,160 @@ class _ConnectedHomePageState extends State<ConnectedHomePage> {
     );
   }
 
-  void bottomDetailsSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) {
-        return Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: Dimensions.defaultPaddingSize),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              SizedBox(height: Dimensions.heightSize8 * 8),
-              InkWell(
-                onTap: () => Navigator.of(context).pop(),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Image.asset(CustomString.back),
-                ),
-              ),
-              SizedBox(height: Dimensions.heightSize8 + 2.h),
-              Image.asset(CustomString.caleBox),
-              SizedBox(height: Dimensions.heightSize8 * 4),
-              Text(CustomString.PTitle, style: CustomTextStyle.titleStyle),
-              SizedBox(height: Dimensions.heightSize8 * 3),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(CustomString.right),
-                  SizedBox(width: 10.w),
-                  Text(CustomString.PremiumSubtitle1,
-                      style: CustomTextStyle.titleStyleBlack600),
-                ],
-              ),
-              SizedBox(height: Dimensions.heightSize8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(CustomString.right),
-                  SizedBox(width: 10.w),
-                  Text(CustomString.PremiumSubtitle1,
-                      style: CustomTextStyle.titleStyleBlack600),
-                ],
-              ),
-              SizedBox(height: Dimensions.heightSize8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(CustomString.right),
-                  SizedBox(width: 10.w),
-                  Text(CustomString.PremiumSubtitle1,
-                      style: CustomTextStyle.titleStyleBlack600),
-                ],
-              ),
-              SizedBox(height: Dimensions.heightSize8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(CustomString.right),
-                  SizedBox(width: 10.w),
-                  Text(CustomString.PremiumSubtitle1,
-                      style: CustomTextStyle.titleStyleBlack600),
-                ],
-              ),
-              SizedBox(height: Dimensions.heightSize8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(CustomString.right),
-                  SizedBox(width: 10.w),
-                  Text(CustomString.PremiumSubtitle1,
-                      style: CustomTextStyle.titleStyleBlack600),
-                ],
-              ),
-              SizedBox(height: Dimensions.heightSize8 * 6),
-              Container(
-                height: 56.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius),
-                  border: Border.all(
-                    color: CustomColor.borderColor.withOpacity(0.80),
-                    width: 2,
-                  ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 55.r),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(CustomString.PremiumAnual,
-                              style: CustomTextStyle.Black600medium),
-                          Container(
-                            alignment: Alignment.center,
-                            height: 16.h,
-                            width: 56.w,
-                            decoration: BoxDecoration(
-                              color: Color(0xff23C350),
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              'Best Value',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 8.sp,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: Dimensions.heightSize8 / 2),
-                      Text(CustomString.PremiumAnualDesc,
-                          style: CustomTextStyle.Black400medium),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: Dimensions.heightSize8 * 3),
-              Container(
-                height: 56.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: CustomColor.buttonNormalBgColor,
-                  borderRadius: BorderRadius.circular(Dimensions.radius),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 55.r),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(CustomString.PremiumMonthly,
-                          style: CustomTextStyle.Black600medium),
-                      SizedBox(height: Dimensions.heightSize8 / 2),
-                      Text(CustomString.PremiumMonthlyDesc,
-                          style: CustomTextStyle.Black400medium),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: Dimensions.heightSize8 * 4),
-              CustomButon(title: CustomString.Pbtn),
-              Spacer(),
-              Text(CustomString.PSubtitle2,
-                  style: CustomTextStyle.subTitleStyle,
-                  textAlign: TextAlign.center),
-              SizedBox(height: Dimensions.heightSize8),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  // void bottomDetailsSheet(BuildContext context) {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     isScrollControlled: true,
+  //     builder: (context) {
+  //       return Padding(
+  //         padding:
+  //             EdgeInsets.symmetric(horizontal: Dimensions.defaultPaddingSize),
+  //         child: Column(
+  //           mainAxisSize: MainAxisSize.max,
+  //           children: [
+  //             SizedBox(height: Dimensions.heightSize8 * 8),
+  //             InkWell(
+  //               onTap: () => Navigator.of(context).pop(),
+  //               child: Align(
+  //                 alignment: Alignment.centerRight,
+  //                 child: Image.asset(CustomString.back),
+  //               ),
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8 + 2.h),
+  //             Image.asset(CustomString.caleBox),
+  //             SizedBox(height: Dimensions.heightSize8 * 4),
+  //             Text(CustomString.PTitle, style: CustomTextStyle.titleStyle),
+  //             SizedBox(height: Dimensions.heightSize8 * 3),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Image.asset(CustomString.right),
+  //                 SizedBox(width: 10.w),
+  //                 Text(CustomString.PremiumSubtitle1,
+  //                     style: CustomTextStyle.titleStyleBlack600),
+  //               ],
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Image.asset(CustomString.right),
+  //                 SizedBox(width: 10.w),
+  //                 Text(CustomString.PremiumSubtitle1,
+  //                     style: CustomTextStyle.titleStyleBlack600),
+  //               ],
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Image.asset(CustomString.right),
+  //                 SizedBox(width: 10.w),
+  //                 Text(CustomString.PremiumSubtitle1,
+  //                     style: CustomTextStyle.titleStyleBlack600),
+  //               ],
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Image.asset(CustomString.right),
+  //                 SizedBox(width: 10.w),
+  //                 Text(CustomString.PremiumSubtitle1,
+  //                     style: CustomTextStyle.titleStyleBlack600),
+  //               ],
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8),
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Image.asset(CustomString.right),
+  //                 SizedBox(width: 10.w),
+  //                 Text(CustomString.PremiumSubtitle1,
+  //                     style: CustomTextStyle.titleStyleBlack600),
+  //               ],
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8 * 6),
+  //             Container(
+  //               height: 56.h,
+  //               decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(Dimensions.radius),
+  //                 border: Border.all(
+  //                   color: CustomColor.borderColor.withOpacity(0.80),
+  //                   width: 2,
+  //                 ),
+  //               ),
+  //               child: Padding(
+  //                 padding: EdgeInsets.symmetric(horizontal: 55.r),
+  //                 child: Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.start,
+  //                   mainAxisAlignment: MainAxisAlignment.center,
+  //                   children: [
+  //                     Row(
+  //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                       children: [
+  //                         Text(CustomString.PremiumAnual,
+  //                             style: CustomTextStyle.Black600medium),
+  //                         Container(
+  //                           alignment: Alignment.center,
+  //                           height: 16.h,
+  //                           width: 56.w,
+  //                           decoration: BoxDecoration(
+  //                             color: Color(0xff23C350),
+  //                             borderRadius: BorderRadius.circular(5),
+  //                           ),
+  //                           child: Text(
+  //                             'Best Value',
+  //                             style: TextStyle(
+  //                               fontWeight: FontWeight.w700,
+  //                               fontSize: 8.sp,
+  //                               color: Colors.white,
+  //                             ),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     ),
+  //                     SizedBox(height: Dimensions.heightSize8 / 2),
+  //                     Text(CustomString.PremiumAnualDesc,
+  //                         style: CustomTextStyle.Black400medium),
+  //                   ],
+  //                 ),
+  //               ),
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8 * 3),
+  //             Container(
+  //               height: 56.h,
+  //               width: double.infinity,
+  //               decoration: BoxDecoration(
+  //                 color: CustomColor.buttonNormalBgColor,
+  //                 borderRadius: BorderRadius.circular(Dimensions.radius),
+  //               ),
+  //               child: Padding(
+  //                 padding: EdgeInsets.symmetric(horizontal: 55.r),
+  //                 child: Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.start,
+  //                   mainAxisAlignment: MainAxisAlignment.center,
+  //                   children: [
+  //                     Text(CustomString.PremiumMonthly,
+  //                         style: CustomTextStyle.Black600medium),
+  //                     SizedBox(height: Dimensions.heightSize8 / 2),
+  //                     Text(CustomString.PremiumMonthlyDesc,
+  //                         style: CustomTextStyle.Black400medium),
+  //                   ],
+  //                 ),
+  //               ),
+  //             ),
+  //             SizedBox(height: Dimensions.heightSize8 * 4),
+  //             CustomButon(title: CustomString.Pbtn),
+  //             Spacer(),
+  //             Text(CustomString.PSubtitle2,
+  //                 style: CustomTextStyle.subTitleStyle,
+  //                 textAlign: TextAlign.center),
+  //             SizedBox(height: Dimensions.heightSize8),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }

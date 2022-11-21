@@ -61,6 +61,19 @@ class _AutoProtectPageState extends State<AutoProtectPage> {
                 },
               ),
               RadioListTile(
+                title: Text(CustomString.AutoProtectTitle2,
+                    style: CustomTextStyle.titleStyleBlack600),
+                subtitle: Text(CustomString.AutoProtectSubTitle2,
+                    style: CustomTextStyle.subTitleStyleBlack400),
+                value: "un",
+                groupValue: _selectedOn,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedOn = value.toString();
+                  });
+                },
+              ),
+              RadioListTile(
                 title: Text(CustomString.AutoProtectTitle3,
                     style: CustomTextStyle.titleStyleBlack600),
                 subtitle: Text(CustomString.AutoProtectSubTitle3,
@@ -94,10 +107,10 @@ class _AutoProtectPageState extends State<AutoProtectPage> {
               // ListTile(
               //   dense: true,
               //   contentPadding: EdgeInsets.all(0),
-              //   title: Text(CustomString.AutoProtectTitle2,
-              //       style: CustomTextStyle.titleStyleBlack600),
-              //   subtitle: Text(CustomString.AutoProtectSubTitle2,
-              //       style: CustomTextStyle.subTitleStyleBlack400),
+              // title: Text(CustomString.AutoProtectTitle2,
+              //     style: CustomTextStyle.titleStyleBlack600),
+              // subtitle: Text(CustomString.AutoProtectSubTitle2,
+              //     style: CustomTextStyle.subTitleStyleBlack400),
               //   trailing: Radio<String>(
               //     activeColor: CustomColor.txtColorRed,
               //     value: 'false',

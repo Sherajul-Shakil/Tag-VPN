@@ -161,9 +161,18 @@ class _LogInPageState extends State<LogInPage> {
                                   ? "${deviceInfoProvider.androidDeviceInfoFromUser.id}"
                                   : "${deviceInfoProvider.iosDeviceInfoFromUser.id}");
 
+                          var userEmail = authProvider.loginUser.data!.email;
                           bool status = authProvider.loginUser.success!;
                           if (status == true) {
                             SharedPreferencesData.setLoggedIn(isLoggedIn: true);
+                            SharedPreferencesData()
+                                .setUserEmail(email: userEmail!);
+                            //print("${SharedPreferencesData().getUserEmail()}");
+                            final res =
+                                await SharedPreferencesData().getUserEmail();
+                            print('*********');
+                            print(res);
+                            print('*********');
                             CustomToast.toastShower(
                                 authProvider.loginUser.message!, Colors.green);
                             Navigator.push(context,

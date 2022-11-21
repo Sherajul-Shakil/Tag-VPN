@@ -32,10 +32,12 @@ class PrivacyPage extends StatelessWidget {
               SizedBox(height: Dimensions.heightSize),
               Text(CustomString.PsubTitle1,
                   style: CustomTextStyle.subTitleStyle),
+              SizedBox(height: 8.h),
               SizedBox(height: Dimensions.heightSize8),
               Text(CustomString.PsubTitle2,
                   style: CustomTextStyle.subTitleStyle),
               SizedBox(height: Dimensions.heightSize8),
+              SizedBox(height: 8.h),
               Text(CustomString.Ptitle2,
                   style: CustomTextStyle.subTitleStyleW500),
               SizedBox(height: Dimensions.heightSize8 / 2.h),
@@ -75,7 +77,7 @@ class PrivacyPage extends StatelessWidget {
                         Expanded(
                           child: Column(
                             children: [
-                              Text(CustomString.Pcollect1,
+                              Text(CustomString.Pcollect2,
                                   style: CustomTextStyle.subTitleStyle),
                             ],
                           ),
@@ -95,50 +97,57 @@ class PrivacyPage extends StatelessWidget {
                         Expanded(
                           child: Column(
                             children: [
-                              Text(CustomString.Pcollect1,
+                              Text(CustomString.Pcollect3,
                                   style: CustomTextStyle.subTitleStyle),
                             ],
                           ),
                         )
                       ],
                     ),
-                    SizedBox(height: Dimensions.heightSize8 / 2.h),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 5.r),
-                          child: Icon(Icons.circle,
-                              color: CustomColor.txtColorBlack, size: 7),
-                        ),
-                        SizedBox(width: Dimensions.widthSize),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Text(CustomString.Pcollect1,
-                                  style: CustomTextStyle.subTitleStyle),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                    // SizedBox(height: Dimensions.heightSize8 / 2.h),
+                    // Row(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Padding(
+                    //       padding: EdgeInsets.only(top: 5.r),
+                    //       child: Icon(Icons.circle,
+                    //           color: CustomColor.txtColorBlack, size: 7),
+                    //     ),
+                    //     SizedBox(width: Dimensions.widthSize),
+                    //     Expanded(
+                    //       child: Column(
+                    //         children: [
+                    //           Text(CustomString.Pcollect1,
+                    //               style: CustomTextStyle.subTitleStyle),
+                    //         ],
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
                     SizedBox(height: Dimensions.heightSize8),
                   ],
                 ),
               ),
-              Text(CustomString.PsubTitle3,
-                  style: CustomTextStyle.subTitleStyle),
-              SizedBox(height: Dimensions.heightSize8 / 2.h),
-              InkWell(
-                onTap: () {
-                  // bottomDetailsSheet(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return PrivacyDetailsPage();
-                  }));
-                },
-                child: Text(CustomString.Ptitle3,
-                    style: CustomTextStyle.subTitleStyleW500Green),
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  Text(CustomString.PsubTitle3,
+                      style: CustomTextStyle.subTitleStyle),
+                  SizedBox(width: 5.w),
+                  InkWell(
+                    onTap: () {
+                      // bottomDetailsSheet(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return PrivacyDetailsPage();
+                      }));
+                    },
+                    child: Text(CustomString.Ptitle3,
+                        style: CustomTextStyle.subTitleStyleW500Green),
+                  ),
+                ],
               ),
+              SizedBox(height: Dimensions.heightSize8 / 2.h),
               Spacer(),
               InkWell(
                 onTap: () => Navigator.push(context,

@@ -42,10 +42,92 @@ class OnBordingPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(CustomString.Otitle, style: CustomTextStyle.titleStyle),
-                  SizedBox(height: Dimensions.heightSize8 * 2.h),
-                  Text(CustomString.OSubTitle,
-                      style: CustomTextStyle.subTitleStyle),
-                  SizedBox(height: Dimensions.heightSize8 * 3.h),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.r),
+                        child: Icon(Icons.circle,
+                            color: CustomColor.txtColorBlack, size: 7),
+                      ),
+                      SizedBox(width: Dimensions.widthSize),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(CustomString.Opoint1,
+                                style: CustomTextStyle.subTitleStyle),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.r),
+                        child: Icon(Icons.circle,
+                            color: CustomColor.txtColorBlack, size: 7),
+                      ),
+                      SizedBox(width: Dimensions.widthSize),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(CustomString.Opoint2,
+                                style: CustomTextStyle.subTitleStyle),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.r),
+                        child: Icon(Icons.circle,
+                            color: CustomColor.txtColorBlack, size: 7),
+                      ),
+                      SizedBox(width: Dimensions.widthSize),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(CustomString.Opoint3,
+                                style: CustomTextStyle.subTitleStyle),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 5.r),
+                        child: Icon(Icons.circle,
+                            color: CustomColor.txtColorBlack, size: 7),
+                      ),
+                      SizedBox(width: Dimensions.widthSize),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(CustomString.Opoint4,
+                                style: CustomTextStyle.subTitleStyle),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  SizedBox(height: Dimensions.heightSize8 / 2.h),
+                  // SizedBox(height: Dimensions.heightSize8 * 2.h),
+                  // Text(CustomString.OSubTitle,
+                  //     style: CustomTextStyle.subTitleStyle),
+                  // SizedBox(height: Dimensions.heightSize8 * 3.h),
                   InkWell(
                     onTap: () async {
                       // final LoginResult result = await FacebookAuth.instance.login(); // by default we request the email and the public profile

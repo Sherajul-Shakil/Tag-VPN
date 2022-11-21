@@ -10,7 +10,9 @@ import 'package:tap_vpn_details/utils/custom_string.dart';
 import 'package:tap_vpn_details/utils/custom_text_style.dart';
 import 'package:tap_vpn_details/utils/shared_preferences/shared_preferences_data.dart';
 import 'package:tap_vpn_details/views/authentication_screens/login_page.dart';
+import 'package:tap_vpn_details/views/premium_subscription_page/payment_page.dart';
 import 'package:tap_vpn_details/views/premium_subscription_page/premium_subscription_page.dart';
+import 'package:tap_vpn_details/views/test/contact_support_page.dart';
 
 import '../providers/authentication_provider.dart';
 import 'setting_page.dart';
@@ -108,54 +110,57 @@ class _DrawerPageState extends State<DrawerPage> {
             Consumer<AuthenticationProvider>(
               builder: (context, authProvider, child) => InkWell(
                 onTap: () {
-                  try {
-                    if (SharedPreferencesData.getLoggedIn() == true) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return PremiumSubscriptionPage();
-                      }));
-                    } else {
-                      Alert(
-                        context: context,
-                        type: AlertType.error,
-                        title: "Alert",
-                        desc: "Need To Log In First",
-                        buttons: [
-                          DialogButton(
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LogInPage(),
-                                )),
-                            width: width / 40,
-                            child: Text(
-                              "OK",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ).show();
-                    }
-                  } catch (error) {
-                    Alert(
-                      context: context,
-                      type: AlertType.error,
-                      title: "Alert",
-                      desc: "Need To Log In First",
-                      buttons: [
-                        DialogButton(
-                          onPressed: () => Navigator.pop(context),
-                          width: 120,
-                          child: Text(
-                            "OK",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        )
-                      ],
-                    ).show();
-                    print(error.toString());
-                  }
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PaymentPage();
+                  }));
+                  // try {
+                  //   if (SharedPreferencesData.getLoggedIn() == true) {
+                  //     Navigator.push(context,
+                  //         MaterialPageRoute(builder: (context) {
+                  //       return PremiumSubscriptionPage();
+                  //     }));
+                  //   } else {
+                  //     Alert(
+                  //       context: context,
+                  //       type: AlertType.error,
+                  //       title: "Alert",
+                  //       desc: "Need To Log In First",
+                  //       buttons: [
+                  //         DialogButton(
+                  //           onPressed: () => Navigator.push(
+                  //               context,
+                  //               MaterialPageRoute(
+                  //                 builder: (context) => LogInPage(),
+                  //               )),
+                  //           width: width / 40,
+                  //           child: Text(
+                  //             "OK",
+                  //             style:
+                  //                 TextStyle(color: Colors.white, fontSize: 20),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ).show();
+                  //   }
+                  // } catch (error) {
+                  //   Alert(
+                  //     context: context,
+                  //     type: AlertType.error,
+                  //     title: "Alert",
+                  //     desc: "Need To Log In First",
+                  //     buttons: [
+                  //       DialogButton(
+                  //         onPressed: () => Navigator.pop(context),
+                  //         width: 120,
+                  //         child: Text(
+                  //           "OK",
+                  //           style: TextStyle(color: Colors.white, fontSize: 20),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ).show();
+                  //   print(error.toString());
+                  // }
                 },
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -201,53 +206,134 @@ class _DrawerPageState extends State<DrawerPage> {
               ),
             ),
             SizedBox(height: 16.h),
-            Consumer<AuthenticationProvider>(
-                builder: (context, authProvider, child) =>
-                    authProvider.user == null
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Need to Sign In?  ',
-                                  style: CustomTextStyle.subTitleStyle),
-                              InkWell(
-                                onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => LogInPage(),
-                                  ));
-                                },
-                                child: Text('Sign In',
-                                    style: TextStyle(
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: CustomColor.txtColorGreen)),
-                              ),
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                authProvider.user!.email!,
-                                style: TextStyle(color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //   builder: (context) => LogInPage(),
-                                  // ));
-                                  authProvider.signOutGoogle();
-                                },
-                                child: Text('Sign Out',
-                                    style: TextStyle(
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: CustomColor.txtColorGreen)),
-                              ),
-                            ],
-                          )),
+            FutureBuilder<String>(
+                future: SharedPreferencesData().getUserEmail(),
+                builder: (context, emailSnapshot) {
+                  if (emailSnapshot.data!.isNotEmpty) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(emailSnapshot.data ?? "",
+                            style: CustomTextStyle.subTitleStyle),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            SharedPreferencesData().clearPref();
+                            setState(() {});
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => LogInPage(),
+                            // ));
+                          },
+                          child: Text('Sign Out',
+                              style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: CustomColor.txtColorGreen)),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Consumer<AuthenticationProvider>(
+                        builder: (context, authProvider, child) => authProvider
+                                    .user ==
+                                null
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Already premium?  ',
+                                      style: CustomTextStyle.subTitleStyle),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                        builder: (context) => LogInPage(),
+                                      ));
+                                    },
+                                    child: Text('Sign In',
+                                        style: TextStyle(
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: CustomColor.txtColorGreen)),
+                                  ),
+                                ],
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    authProvider.user!.email!,
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //   builder: (context) => LogInPage(),
+                                      // ));
+                                      authProvider.signOutGoogle();
+                                    },
+                                    child: Text('Sign Out',
+                                        style: TextStyle(
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: CustomColor.txtColorGreen)),
+                                  ),
+                                ],
+                              ));
+                  }
+                }),
+            // SizedBox(height: 16.h),
+            // Consumer<AuthenticationProvider>(
+            //     builder: (context, authProvider, child) =>
+            //         authProvider.user == null
+            //             ? Row(
+            //                 mainAxisAlignment: MainAxisAlignment.center,
+            //                 children: [
+            //                   Text('Need to Sign In?  ',
+            //                       style: CustomTextStyle.subTitleStyle),
+            //                   InkWell(
+            //                     onTap: () {
+            //                       Navigator.of(context).push(MaterialPageRoute(
+            //                         builder: (context) => LogInPage(),
+            //                       ));
+            //                     },
+            //                     child: Text('Sign In',
+            //                         style: TextStyle(
+            //                             fontSize: 15.sp,
+            //                             fontWeight: FontWeight.w600,
+            //                             color: CustomColor.txtColorGreen)),
+            //                   ),
+            //                 ],
+            //               )
+            //             : Row(
+            //                 mainAxisAlignment: MainAxisAlignment.center,
+            //                 children: [
+            //                   Text(
+            //                     authProvider.user!.email!,
+            //                     style: TextStyle(color: Colors.black),
+            //                   ),
+            //                   SizedBox(
+            //                     width: 10,
+            //                   ),
+            //                   InkWell(
+            //                     onTap: () {
+            //                       // Navigator.of(context).push(MaterialPageRoute(
+            //                       //   builder: (context) => LogInPage(),
+            //                       // ));
+            //                       authProvider.signOutGoogle();
+            //                     },
+            //                     child: Text('Sign Out',
+            //                         style: TextStyle(
+            //                             fontSize: 15.sp,
+            //                             fontWeight: FontWeight.w600,
+            //                             color: CustomColor.txtColorGreen)),
+            //                   ),
+            //                 ],
+            //               )),
             SizedBox(height: 32.h),
             Padding(
               padding: EdgeInsets.only(
@@ -295,44 +381,51 @@ class _DrawerPageState extends State<DrawerPage> {
             SizedBox(
               height: height / 46,
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: width / 55,
-                right: width / 40,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: CustomColor.greenMainColor,
-                    width: width / 180,
-                  ),
-                  borderRadius: BorderRadius.circular(width / 35),
+            InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ContactSupport();
+                }));
+              },
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: width / 55,
+                  right: width / 40,
                 ),
-                child: Padding(
-                  padding:
-                      EdgeInsets.only(top: height / 70, bottom: height / 70),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: width / 8,
-                      ),
-                      Image.asset(
-                        CustomString.headPhoneIcon,
-                        width: width / 20,
-                        height: width / 20,
-                      ),
-                      SizedBox(
-                        width: width / 25,
-                      ),
-                      Text(
-                        "Contact Support",
-                        style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black),
-                      )
-                    ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: CustomColor.greenMainColor,
+                      width: width / 180,
+                    ),
+                    borderRadius: BorderRadius.circular(width / 35),
+                  ),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.only(top: height / 70, bottom: height / 70),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: width / 8,
+                        ),
+                        Image.asset(
+                          CustomString.headPhoneIcon,
+                          width: width / 20,
+                          height: width / 20,
+                        ),
+                        SizedBox(
+                          width: width / 25,
+                        ),
+                        Text(
+                          "Contact Support",
+                          style: TextStyle(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
