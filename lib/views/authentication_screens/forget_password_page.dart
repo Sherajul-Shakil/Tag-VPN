@@ -88,7 +88,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(CustomString.logInTextField1,
-                      style: CustomTextStyle.Black400),
+                      style: CustomTextStyle.Black400medium),
                   SizedBox(
                     height: height / 22,
                     child: TextField(
@@ -103,7 +103,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             SizedBox(height: height / 30),
             GestureDetector(
               onTap: () async {
-                if (authProvider.isForgetPasswordPageButtonPressed == false) {
+                if (authProvider.isForgetPasswordPageButtonPressed == false &&
+                    emailController.text.isNotEmpty) {
                   authProvider.isForgetPasswordPageButtonPressed = true;
                   authProvider.emailForForgetPassword = emailController.text;
                   await authProvider
@@ -146,8 +147,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                     padding: EdgeInsets.only(
                       top: height / 100,
                       bottom: height / 100,
-                      left: width / 3.3,
-                      right: width / 3.8,
+                      // left: width / 3.3,
+                      // right: width / 3.8,
                     ),
                     child: Text(
                       "Reset Password",

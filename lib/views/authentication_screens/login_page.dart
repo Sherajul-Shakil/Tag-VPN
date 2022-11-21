@@ -105,7 +105,7 @@ class _LogInPageState extends State<LogInPage> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: height / 6),
+                          padding: EdgeInsets.only(top: height / 8),
                           child: Text(
                             CustomString.logIn,
                             style: TextStyle(
@@ -124,17 +124,17 @@ class _LogInPageState extends State<LogInPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Dimensions.heightSize8 * 4),
+                      SizedBox(height: Dimensions.heightSize8 * 2),
                       MyTextField(
                         controller: emailController,
                         title: CustomString.logInTextField1,
                       ),
-                      SizedBox(height: Dimensions.heightSize8 * 3),
+                      SizedBox(height: Dimensions.heightSize8 * 2),
                       MyTextField(
                         controller: passwordController,
                         title: CustomString.logInTextField2,
                       ),
-                      SizedBox(height: Dimensions.heightSize8 * 3),
+                      SizedBox(height: Dimensions.heightSize8 * 2),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.r),
                         child: GestureDetector(
@@ -148,7 +148,7 @@ class _LogInPageState extends State<LogInPage> {
                               style: CustomTextStyle.subTitleStylegreenNormal),
                         ),
                       ),
-                      SizedBox(height: Dimensions.heightSize8 * 3),
+                      SizedBox(height: Dimensions.heightSize8 * 2),
                       InkWell(
                         onTap: () async {
                           await authProvider.loginUserInfo(
@@ -170,9 +170,7 @@ class _LogInPageState extends State<LogInPage> {
                             //print("${SharedPreferencesData().getUserEmail()}");
                             final res =
                                 await SharedPreferencesData().getUserEmail();
-                            print('*********');
-                            print(res);
-                            print('*********');
+
                             CustomToast.toastShower(
                                 authProvider.loginUser.message!, Colors.green);
                             Navigator.push(context,

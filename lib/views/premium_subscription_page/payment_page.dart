@@ -22,6 +22,8 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
   Map<String, dynamic>? paymentIntentData;
+
+  bool isAnnual = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -106,72 +108,93 @@ class _PaymentPageState extends State<PaymentPage> {
           //   ],
           // ),
           SizedBox(height: Dimensions.heightSize8 * 6),
-          Container(
-            height: 56.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius),
-              border: Border.all(
-                color: CustomColor.borderColor.withOpacity(0.80),
-                width: 2,
+          InkWell(
+            onTap: () {
+              setState(() {
+                isAnnual = true;
+              });
+            },
+            child: Container(
+              height: 56.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius),
+                border: Border.all(
+                  color: isAnnual
+                      ? CustomColor.borderColor.withOpacity(0.80)
+                      : CustomColor.borderColor.withOpacity(0.10),
+                  width: 2,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 55.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(CustomString.PremiumAnual,
-                          style: CustomTextStyle.Black600medium),
-                      Container(
-                        alignment: Alignment.center,
-                        height: 16.h,
-                        width: 56.w,
-                        decoration: BoxDecoration(
-                          color: Color(0xff23C350),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Text(
-                          'Best Value',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 8.sp,
-                            color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 55.r),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(CustomString.PremiumAnual,
+                            style: CustomTextStyle.Black600medium),
+                        Container(
+                          alignment: Alignment.center,
+                          height: 16.h,
+                          width: 56.w,
+                          decoration: BoxDecoration(
+                            color: Color(0xff23C350),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Text(
+                            'Best Value',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 8.sp,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: Dimensions.heightSize8 / 2),
-                  Text(CustomString.PremiumAnualDesc,
-                      style: CustomTextStyle.Black400),
-                ],
+                      ],
+                    ),
+                    SizedBox(height: Dimensions.heightSize8 / 2),
+                    Text(CustomString.PremiumAnualDesc,
+                        style: CustomTextStyle.Black400),
+                  ],
+                ),
               ),
             ),
           ),
           SizedBox(height: Dimensions.heightSize8 * 3),
-          Container(
-            height: 56.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: CustomColor.buttonNormalBgColor,
-              borderRadius: BorderRadius.circular(Dimensions.radius),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 55.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(CustomString.PremiumMonthly,
-                      style: CustomTextStyle.Black600medium),
-                  SizedBox(height: Dimensions.heightSize8 / 2),
-                  Text(CustomString.PremiumMonthlyDesc,
-                      style: CustomTextStyle.Black400),
-                ],
+          InkWell(
+            onTap: () {
+              setState(() {
+                isAnnual = false;
+              });
+            },
+            child: Container(
+              height: 56.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius),
+                border: Border.all(
+                  color: isAnnual
+                      ? CustomColor.borderColor.withOpacity(0.10)
+                      : CustomColor.borderColor.withOpacity(0.80),
+                  width: 2,
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 55.r),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(CustomString.PremiumMonthly,
+                        style: CustomTextStyle.Black600medium),
+                    SizedBox(height: Dimensions.heightSize8 / 2),
+                    Text(CustomString.PremiumMonthlyDesc,
+                        style: CustomTextStyle.Black400),
+                  ],
+                ),
               ),
             ),
           ),

@@ -7,6 +7,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:tap_vpn_details/utils/custom_color.dart';
 import 'package:tap_vpn_details/utils/custom_string.dart';
+import 'package:tap_vpn_details/views/drawer_page.dart';
+import 'package:tap_vpn_details/views/setting_page.dart';
 import '../providers/authentication_provider.dart';
 import '../providers/vpn_provider.dart';
 import '../utils/custom_text_style.dart';
@@ -38,7 +40,14 @@ class _LocationSelectPageState extends State<LocationSelectPage> {
         child: Image.asset(CustomString.drawer),
       ),
       actions: [
-        Image.asset(CustomString.what),
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return SettingPage();
+            }));
+          },
+          child: Image.asset(CustomString.what),
+        ),
         // Consumer<AuthenticationProvider>(
         //   builder: (context, authProvider, child) => authProvider.user == null
         //       ? Image.asset(CustomString.what)
@@ -68,6 +77,8 @@ class _LocationSelectPageState extends State<LocationSelectPage> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      key: scaffoldKey,
+      drawer: DrawerPage(),
       appBar: _appbar,
       backgroundColor: CustomColor.bgColor,
       body: SingleChildScrollView(
