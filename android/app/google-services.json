@@ -9,23 +9,15 @@
       "client_info": {
         "mobilesdk_app_id": "1:458686137737:android:ab0c6c39a328906b3d4d58",
         "android_client_info": {
-          "package_name": "com.example.tap_vpn_details"
+          "package_name": "com.rakibvpnnet.tagvpn"
         }
       },
       "oauth_client": [
         {
-          "client_id": "458686137737-55jlf35c9h24a93s99di99b2kqo0mlja.apps.googleusercontent.com",
+          "client_id": "458686137737-jv9frb4kskoj2it9cl5pisb5jk3ul38v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.tap_vpn_details",
-            "certificate_hash": "9e84d6ff680710a799565814ec32340d117ba1ea"
-          }
-        },
-        {
-          "client_id": "458686137737-f7ajensnuaiba4s5vqsvtlhjgmhpk6m1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.tap_vpn_details",
+            "package_name": "com.rakibvpnnet.tagvpn",
             "certificate_hash": "812bd3fc04e5c75137ba3655f976b46b3df63c53"
           }
         },

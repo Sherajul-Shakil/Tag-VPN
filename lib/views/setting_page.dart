@@ -77,7 +77,7 @@ class SettingPage extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Share.share(Uri.parse(
-                          'https://play.google.com/store/apps/details?id=com.tag.vpn&pli=1')
+                          'https://play.google.com/store/apps/details?id=com.rakibvpnnet.tagvpn&pli=1')
                       .toString());
                 },
                 child: CustomSettingItem(

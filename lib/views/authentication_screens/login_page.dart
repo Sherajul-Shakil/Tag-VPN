@@ -299,6 +299,7 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
+                SizedBox(height: 24.h),
               ],
             ),
           ),

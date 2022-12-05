@@ -1,4 +1,4 @@
-package com.example.tap_vpn_details
+package com.rakibvpnnet.tagvpn
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity
